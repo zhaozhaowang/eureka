@@ -1,0 +1,28 @@
+#eureka容器
+
+server:
+  port: 10086
+spring:
+  application:
+    name: eureka-center
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+  server:
+    #有时候,我们的服务并不一定都是正常下线,可能因为内存溢出或者网络故障的原因都无法正常工作
+    #所以eureka-server需要将这样的服务剔除服务列表,因此它会开启一个定时任务,默认每隔60秒对所有失效的服务进行剔除
+    eviction-interval-timer-in-ms: 5000 
+    enable-self-preservation: false #关闭自我保护模式
+
+
+
+
+#eureka容器引入的是
+#spring-cloud-starter-netflix-eureka-server
+#    <dependencies>
+#        <dependency>
+#            <groupId>org.springframework.cloud</groupId>
+#            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+#        </dependency>
+#    </dependencies>

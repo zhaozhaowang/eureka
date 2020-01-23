@@ -1,0 +1,20 @@
+#服务的提供方...
+
+server:
+  port: 8070
+spring:
+  application:
+    name: service-provider
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/hm49?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+eureka:
+  client:
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5      #间隔5秒钟发送一次心跳
+    lease-expiration-duration-in-seconds: 15  #过了15秒还没发送心跳,就代表该服务挂掉了
